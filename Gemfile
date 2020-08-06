@@ -9,6 +9,7 @@ gem 'puma', '~> 4.1'
 gem 'puma_worker_killer'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.2'
 gem 'sass-rails', '>= 6'
+gem 'sentry-raven'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 group :development, :test do
