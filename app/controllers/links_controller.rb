@@ -25,9 +25,9 @@ class LinksController < ApiController
   def redirect
     @link = Link.find_by(slug: params[:slug])
     if @link.present?
-      @link.uses_count += 1
-      @link.first_used_at = Time.current if @link.first_used_at.blank?
-      @link.last_used_at = Time.current
+      link_use = @link.uses.create(ip_address: request.remote_ip, user_agent: request.user_agent)
+      @link.first_used_at = link_use.created_at if @link.first_used_at.blank?
+      @link.last_used_at = link_use.created_at
       @link.save!
 
       redirect_to @link.url, status: :found

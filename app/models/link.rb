@@ -1,4 +1,5 @@
 class Link < ApplicationRecord
+  has_many :uses, class_name: 'LinkUse'
   before_validation :assign_slug, on: :create
 
   validates :url, presence: true
@@ -21,7 +22,8 @@ class Link < ApplicationRecord
       uses_count: uses_count,
       first_used_at: first_used_at,
       last_used_at: last_used_at,
-      '$ref': url_context.link_path(self)
+      '$ref': url_context.link_path(self),
+      uses: uses.map(&:to_hash),
     }
   end
 

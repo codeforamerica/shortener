@@ -24,7 +24,8 @@ Simple, dynamic link shortener. Inspired by [Shorti](https://github.com/scottwat
      "uses_count": 0,
      "first_used_at": null,
      "last_used_at": null,
-     "$ref": "http://localhost:3000/links/NYczp"
+     "$ref": "http://localhost:3000/links/NYczp",
+     "uses": []
    }
    ```
 3. Visit the `shortened_url` to be redirected.
@@ -42,9 +43,18 @@ Simple, dynamic link shortener. Inspired by [Shorti](https://github.com/scottwat
      "url": "https://www.codeforamerica.org",
      "shortened_url": "http://localhost:3000/NYczp",
      "uses_count": 1,
-     "first_used_at": "2020-08-05T00:42:32.840Z",
-     "last_used_at": "2020-08-05T00:42:32.840Z",
-     "$ref": "/links/NYczp"
+     "first_used_at": "2020-08-06T02:34:31.741Z",
+     "last_used_at": "2020-08-06T02:34:31.741Z",
+     "$ref": "/links/NYczp",
+     "uses": [
+       {
+         "id": 7,
+         "link_id": 3,
+         "created_at": "2020-08-06T02:34:31.741Z",
+         "identity": "e6a1f38d3567af97a388b25b2dd3700c",
+         "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Safari/537.36"}
+       }
+     ]
    }
    ```
 
