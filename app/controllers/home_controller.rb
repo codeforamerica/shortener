@@ -1,8 +1,9 @@
-class HomeController < ApplicationController
+class HomeController < ApiController
   def index
-    respond_to do |format|
-      format.html { render plain: "Shortener" }
-      format.js { render json: { message: "Shortener" } }
+    if Rails.application.secrets.shortener_root_redirect_url.present?
+      redirect_to Rails.application.secrets.shortener_root_redirect_url
+    else
+      render plain: "Shortener"
     end
   end
 end
