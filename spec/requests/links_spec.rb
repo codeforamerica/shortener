@@ -55,7 +55,7 @@ RSpec.describe "Links API", type: :request do
 
       expect(json_body).to include(
                              slug: link.slug,
-                             description: link.description,
+                             description: link.description
                            )
     end
 
@@ -76,13 +76,21 @@ RSpec.describe "Links API", type: :request do
       expect(response).to redirect_to(link.url)
     end
 
-    it "increments the counter" do
-      expect do
-        get shortened_link_path(link)
-      end.to change { link.reload.uses_count }.from(0).to(1)
+    it "creates a new LinkUse record" do
+      get shortened_link_path(link), env: { "REMOTE_ADDR": '99.9.99.99' }, headers: { 'HTTP_USER_AGENT' => 'Mozilla/5.0 (blah blah)' }
 
-      expect(link.first_used_at).to be_within(1.second).of(Time.current)
-      expect(link.last_used_at).to be_within(1.second).of(Time.current)
+      link.reload
+
+      expect(link.uses_count).to eq 1
+      expect(link.uses.size).to eq 1
+
+      link_use = link.reload.uses.first
+      expect(link_use).to have_attributes(
+                            user_agent: 'Mozilla/5.0 (blah blah)',
+                            identity: Digest::MD5.hexdigest(Rails.application.secrets.secret_key_base + '99.9.99.99')
+                          )
+      expect(link.first_used_at).to eq link_use.created_at
+      expect(link.last_used_at).to eq link_use.created_at
     end
 
     it "stores first and last_used_at when accessed" do

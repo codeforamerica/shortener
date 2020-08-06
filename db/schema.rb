@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_04_222358) do
+ActiveRecord::Schema.define(version: 2020_08_05_200355) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "link_uses", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.bigint "link_id", null: false
+    t.text "user_agent"
+    t.text "identity"
+    t.index ["link_id"], name: "index_link_uses_on_link_id"
+  end
 
   create_table "links", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -28,4 +36,5 @@ ActiveRecord::Schema.define(version: 2020_08_04_222358) do
     t.index ["url"], name: "index_links_on_url"
   end
 
+  add_foreign_key "link_uses", "links", on_delete: :cascade
 end
