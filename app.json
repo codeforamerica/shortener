@@ -1,0 +1,15 @@
+{
+  "name": "Shortener",
+  "description": "Simple, dynamic link shortener.",
+  "scripts": {
+    "postdeploy": "bin/rails heroku:postdeploy"
+  },
+    "SECRET_KEY_BASE": {
+      "description": "Secret key base for Rails.",
+      "generator": "secret"
+    },
+  },
+  "addons": [
+    "heroku-postgresql"
+  ]
+}
