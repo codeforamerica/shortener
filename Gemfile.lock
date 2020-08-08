@@ -117,6 +117,7 @@ GEM
       concurrent-ruby (~> 1.0)
     jbuilder (2.10.0)
       activesupport (>= 5.0.0)
+    language_filter (0.3.01)
     launchy (2.5.0)
       addressable (~> 2.7)
     listen (3.1.5)
@@ -295,6 +296,7 @@ DEPENDENCIES
   factory_bot_rails
   faker
   jbuilder (~> 2.7)
+  language_filter
   launchy
   lintstyle!
   listen (>= 3.0.5, < 3.2)
