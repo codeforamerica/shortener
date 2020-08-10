@@ -6,7 +6,11 @@ class Link < ApplicationRecord
   validates :slug, presence: true, uniqueness: true
 
   SLUG_CHARS = ('a'..'z').to_a + ('A'..'Z').to_a + ('0'..'9').to_a - %w[l I 1 O 0]
-  SLUG_LENGTH = 5
+  SLUG_LENGTH = 8
+
+  def self.language_filter
+    @_language_filter ||= LanguageFilter::Filter.new
+  end
 
   def to_param
     slug
@@ -33,12 +37,16 @@ class Link < ApplicationRecord
 
   private
 
+  def generate_slug
+    Array.new(SLUG_LENGTH) { SLUG_CHARS.sample }.join
+  end
+
   def assign_slug
     return if slug.present?
 
     loop do
-      self.slug = Array.new(SLUG_LENGTH) { SLUG_CHARS.sample }.join
-      break unless self.class.exists?(slug: slug)
+      self.slug = generate_slug
+      break unless self.class.language_filter.match?(slug) || self.class.exists?(slug: slug)
     end
   end
 end
