@@ -52,7 +52,7 @@ Simple, dynamic link shortener. Inspired by [Shorti](https://github.com/scottwat
          "link_id": 3,
          "created_at": "2020-08-06T02:34:31.741Z",
          "identity": "e6a1f38d3567af97a388b25b2dd3700c",
-         "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Safari/537.36"}
+         "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Safari/537.36"
        }
      ]
    }
