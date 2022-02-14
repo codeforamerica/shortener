@@ -4,6 +4,7 @@
   "scripts": {
     "postdeploy": "bin/rails heroku:postdeploy"
   },
+  "env": {
     "SECRET_KEY_BASE": {
       "description": "Secret key base for Rails.",
       "generator": "secret"
