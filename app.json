@@ -8,7 +8,7 @@
     "SECRET_KEY_BASE": {
       "description": "Secret key base for Rails.",
       "generator": "secret"
-    },
+    }
   },
   "addons": [
     "heroku-postgresql"
