@@ -96,7 +96,7 @@ RSpec.describe "Links API", type: :request do
     it "stores first and last_used_at when accessed" do
       expect do
         get shortened_link_path(link)
-      end.to change { link.reload.first_used_at }.from(nil).to be_within(1.second).of(Time.current)
+      end.to change { link.reload.first_used_at }.from(nil).to be_within(5.seconds).of(Time.current)
 
       expect do
         get shortened_link_path(link)
