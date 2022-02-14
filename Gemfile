@@ -1,14 +1,15 @@
 source 'https://rubygems.org'
-ruby '2.6.6'
+ruby_version = File.read(File.join(File.dirname(__FILE__), '.ruby-version')).strip
+ruby ruby_version
 
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'jbuilder', '~> 2.7'
 gem 'language_filter'
-gem 'pg', '>= 0.18', '< 2.0'
+gem 'pg'
 gem 'pry-rails'
 gem 'puma', '~> 4.1'
 gem 'puma_worker_killer'
-gem 'rails', '~> 6.0.2', '>= 6.0.2.2'
+gem 'rails', '~> 6.0.2'
 gem 'sass-rails', '>= 6'
 gem 'sentry-raven'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
@@ -24,11 +25,11 @@ group :development do
   gem 'annotate'
   gem 'eefgilm'
   gem 'lintstyle', github: 'bensheldon/lintstyle'
-  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'listen'
   gem 'spring'
   gem 'spring-commands-rspec'
-  gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'web-console', '>= 3.3.0'
+  gem 'spring-watcher-listen'
+  gem 'web-console'
 end
 
 group :test do
